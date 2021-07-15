@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <title>Shop</title>
+</head>
+
+<body>
+        <header class="cl-header">
+                <div>
+                    <img src="images/logo.jpg" alt="logo" class="cl-logo"/>
+                    <h3 class="cl-company-name">
+                        <b>House Store</b>
+                    </h3>
+                </div>
+            </header>
+            <br/>
+            <br/>
+            <br/>
+     <center>
+     <div class="register-box">
+            <div>
+                <p class="register-title">User Login</p>
+            </div>
+            <form action="/login" method="POST" class="register-register-form" >
+                <fieldset class="register-input-container">
+                    <div class="register-input-item">
+                        <input type="text" class="register-user-input-name register-user-input" id="email" name="email" placeholder="Your Email">
+                    </div>
+                    <div class="register-input-item">
+                        <input type="password" class="register-user-input-password register-user-input" id="password" name="password" placeholder="Choose Password">
+                    </div>
+                </fieldset>
+                <fieldset class="register-register-button-container">
+                    <button class="register-register-button">Log In</button>
+                </fieldset>
+            </form>
+            <div class="register-link-container">
+                <div class="register-login-link">
+                    <span class="register-info-text">Do not have an account ?</span>
+                    <a class="register-create-account-link register-link" href="/signup.html">Sign Up !</a>
+                </div>
+            </div>
+        </div> 
+        </center>
+</body>
+</html>

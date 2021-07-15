@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <title>Home</title>
+    <style>
+
+        .div1 {
+            color: white;
+            padding: 10em;
+            text-align: center;
+            margin-left: 1em;
+            margin-right: 0.5em;
+            margin-top: 4em;
+            border-color: white 1px solid;
+        }
+
+        legend {
+            border-color: white 1px solid;
+
+        }
+
+        h1 {
+            font-size: 3em;
+            color: rgb(10, 129, 158);
+            margin-bottom: 0.4em;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: rgb(21, 165, 129);
+            text-align: center;
+        }
+
+        
+        h3 {
+            font-size: 2em;
+            color:  rgb(21, 165, 129);
+            margin-bottom: 1em;
+
+        }
+        h3.ab {
+            font-size: 2em;
+            color:  rgb(10, 129, 158);
+            margin-bottom: 1em;
+
+        }
+    </style>
+</head>
+
+<body class="bg">
+    <header class="cl-header">
+        <div>
+            <img src="/images/logo.jpg" alt="logo" class="cl-logo"/>
+            <h3 class="cl-company-name">
+                <b>House Store</b>
+            </h3>
+        </div><span>
+        <% if(udata==null||udata==""){
+            %> <a href="register">Registration</a> <%
+            }else if((udata!=null||udata!="")&&(usertype=="employee")) {
+            %>
+            <a href="users">Users</a>
+            <%
+            }%>
+            <a href="products">Products</a>
+            <%
+            if(udata!=null&&udata!=""){
+                if(usertype!="employee"){
+            %> <a href="profile">Profile</a> <a href="aboutus">AboutUs</a>    
+            <%
+                }
+                 %>     <a href="logoutme">Logout</a> <%    
+            }else{
+                  %> <a href="login">Login</a> <%
+            }
+            %> 
+        </span> 
+    </header>
+    <div class="div1">
+        <fieldset>
+            <legend>
+                <h1>House Store</h1>
+            </legend>
+            <p>
+            <% if(usertype!="customer"  ){
+            %>
+                <h3> Welcome <%=udata.name%> </h3>
+            <%
+            }else{
+            %>
+            <h3 class="ab"> Bonjour!!! <%=udata.name%> Enjoy Your Shopping with House Store!</h3>
+            <h2>We Provide you the Best Solution that fits to your House Look.</h2><br>
+            <%
+            }%>
+            </p>
+        </fieldset>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <title>Inventory Of Products</title>
+  <style>
+   
+    .p1 {
+      color: white;
+      font-size: 2em;
+    }
+
+
+    .b2 {
+      border-radius: 50%;
+      width: 6em;
+      height: 3em;
+      border: none;
+      cursor: pointer;
+    }
+
+
+
+    p {
+      margin-top: em;
+    }
+
+    h1 {
+            font-size: 3em;
+            color: rgb(10, 129, 158);
+            margin-bottom: 0.4em;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: rgb(21, 165, 129);
+            text-align: center;
+        }
+
+        
+        h3 {
+            font-size: 2em;
+            color: rgb(21, 165, 129);
+            margin-bottom: 1em;
+
+        }
+        .td-gallery{
+
+        }
+
+    div.gallery {
+      margin: 0.32em;
+      border: 1px solid #ccc;
+      float: left;
+      width: 30em;
+      height: 25em;
+    }
+
+    div.gallery:hover {
+      border: 1px solid rgb(48, 47, 47);
+    }
+
+    div.gallery img {
+      width: 100%;
+      height: 20em;
+    }
+
+    div.description {
+      padding: 0.94em;
+      text-align: center;
+      font-size: 1.9em;
+      vertical-align: middle;
+      height: 100%;
+      color: rgb(21, 165, 129);
+    }
+  </style>
+</head>
+
+<body class="bg">
+  <header class="cl-header">
+    <div>
+        <img src="/images/logo.jpg" alt="logo" class="cl-logo"/>
+        <h3 class="cl-company-name">
+            <b>House Store</b>
+        </h3>
+    </div>  <span>
+      <a href="Home">Home</a>
+      <% if((udata==null||udata=="")&&(usertype!="employee")){
+        %> <a href="register">Registration</a> 
+        <%
+        } %>
+<% if((udata!=null&&udata!="")&&(usertype=="employee")){
+%><a href="addproduct">NewProduct</a>       <a href="allorders">Orders</a>
+
+<%
+}else if((udata!=null&&udata!="")&&(usertype=="customer")){
+%>
+
+<a href="shoppingcart"><img style="color:green;" width="30" height="30"  viewBox="0 0 24 24" src="images/cart.svg" /></a>
+<a href="aboutus">AboutUs</a>
+<%
+}
+%>
+      
+      <%
+            if(udata!=null&&udata!=""){
+                 %>     <a href="logoutme">Logout</a> <%    
+            }else{
+                  %> <a href="login">Login</a> <%
+            }
+            %>
+
+    </span>
+  </header>
+  <header>
+  </header>
+  
+<center>
+    <h1>Products</h1>
+    <table>
+ <tr>
+ <td class="td-gallery"> 
+     <div class="gallery">
+        <a href="bedroom">
+          <img src="images/bedroom.png" alt="Bedroom Products" width="600" height="400">
+        </a>
+        <div class="description">Bedroom Products</div>
+      </div>
+    </td><td>    
+    <div class="gallery">
+        <a href="kitchen">
+      <img src="images/kitchen.png" alt="Kitchen Products" width="600" height="400">
+    </a>
+    <div class="description">Kitchen Products</div>
+  </div>
+</td>
+  
+</tr>
+  <tr>
+      <td>
+  <div class="gallery">
+    <a href="livingroom">
+      <img src="images/livingroom.png" alt="Livingroom Products" width="600" height="800">
+    </a>
+    <div class="description">Livingroom Products</div>
+  </div>
+</td><td>
+  <div class="gallery">
+    <a href="outdoor">
+      <img src="images/outdoor.png" alt="Outdoor Products" width="600" height="400">
+    </a>
+    <div class="description">Outdoor Products</div>
+  </div>
+</td>
+</tr></table></center>
+</body>
+
+</html>

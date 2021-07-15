@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="../public/js/jquery-3.1.1.min.js"></script>
+<script src="../public/js/jquery.form.min.js"></script>
+<script>
+    var loadFile=function(event){
+        var image=document.getElementById('preview_image');
+        image.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+<style>
+     html {
+            height: 100%;
+            width: 100%;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    legend {
+        border-color: white 1px solid;
+    }
+    a:hover {
+            color: rgb(127, 182, 150);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .div1 {
+            color: white;
+            padding: 10em;
+            float: left;
+            margin-left: 1em;
+            margin-right: 0.5em;
+            margin-top: 4em;
+        }
+
+        form {
+            float: right;
+            color: rgb(127, 182, 150);;
+            padding-top: 10em;
+            margin-bottom: 5em;
+            margin-left: 25em;
+        }
+
+        legend {
+            border-color: white 1px solid;
+
+        }
+
+        input {
+            float: right;
+            margin-right: 1.9em;
+            margin-bottom: 1.0em;
+            color: rgb(21, 165, 129);
+        }
+
+        label {
+            text-align: center;
+            padding: 2em;
+            margin-right: 2em;
+            color: rgb(21, 165, 129);
+        }
+
+        h1 {
+            font-size: 2em;
+            color: rgb(10, 129, 158);
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: rgb(21, 165, 129);
+        }
+        h3 {
+            font-size: 2em;
+            color: rgb(21, 165, 129);
+            margin-bottom: 1em;
+
+        }
+
+        .b1 {
+            margin-left: 8em;
+            cursor: pointer;
+        }
+        td{
+            color: rgb(21, 165, 129);
+        }
+.item-submit{
+    background-color: rgb(21, 165, 129);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border: 0;
+    text-transform: uppercase;
+    border-radius: 3px;
+	font-family: Whitney;
+	cursor: pointer;
+}
+center{
+    margin-top: -500px;
+    margin-left: -900px;
+    vertical-align: middle;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color:white;
+}
+select{
+    color: rgb(21, 165, 129);
+}
+
+</style>
+</head>
+
+<body>
+    <header class="cl-header">
+        <div>
+            <img src="/images/logo.jpg" alt="logo" class="cl-logo"/>
+            <h3 class="cl-company-name">
+                <b>House Store</b>
+            </h3>
+        </div>  <span>
+            <a href="Home">Home</a>
+            <a href="products">Products</a>
+            <a href="aboutus">AboutUs</a>
+            <%
+            if(udata!=null&&udata!=""){
+                 %> <a href="logoutme">Logout</a> <%    
+            }else{
+                  %> <a href="login">Login</a> <%
+            }
+            %>
+    </header>
+<center>
+    <form id="frmUploader" color='#FFF' enctype="multipart/form-data" action="addproduct" method="post">
+        <table color="#FFF" rows=7 cols=2>
+            <thead><h1 id='title'>Add Product</h1></thead>
+     <tr align="center"><td><td></td><h4>Preview</h4></td><td></td> </tr> 
+     <img id="preview_image" name="preview_image" width="200" height="300"/>       
+     <tr><td color="#FFF" > Product Image: </td><td><input color="#FFF" type="file" accept="image/*" name="imguploader" onchange="loadFile(event)"/></td></tr>
+     <tr><td> Product type: </td>
+        <td><select class="form-control" name="prtype" required>
+                <option value="">Select Type</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="livingroom">Livingroom</option>
+                <option value="bedroom">Bedroom</option>
+                <option value="outdoor">Outdoor</option>
+            </select>
+        </td></tr>
+      <tr><td>Product Name:</td> <td><input type="text" name="prname" required/></td></tr>
+      <tr><td>Product Description:</td> <td><input type="text" name="prdescription" required/></td></tr>
+      <tr><td>Seller Name:</td> <td><input type="text" name="prsellername" required/></td></tr>
+      <tr><td>Product Price(CAD): </td><td><input type="number" name="prprice" value="10" required/></td></tr>
+      <tr><td>Available Quantity:</td> <td><input type="number" value="1" name="prquantity" required/></td></tr>
+      <tr> <td></td><td><input type="submit" class="item-submit" name="submit" id="btnSubmit" value="Upload" required/><td> </tr>
+    </td></table>
+    </form>
+</center> 
+</body>
+</html>

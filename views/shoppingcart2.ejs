@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> 
+    <script src="js/shoppingcart.js" type="text/javascript" async></script>
+    </script>
+    <style>
+        h1{       font-size: 3em;
+            color: rgb(10, 129, 158);
+            margin-bottom: 0.4em;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: rgb(21, 165, 129);
+            text-align: center;
+        }
+
+        
+        h3 {
+            font-size: 2em;
+            color: rgb(21, 165, 129);
+            margin-bottom: 1em;
+
+        }
+    </style>
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <header class="cl-header">
+        <div>
+            <img src="/images/logo.jpg" alt="logo" class="cl-logo"/>
+            <h3 class="cl-company-name">
+                <b>House Store</b>
+            </h3>
+            <span>
+                <a href="Home">Home</a>
+                <a href="products">Addproduct</a>
+                <a href="logoutme">Logout</a>
+       </div>
+    </header>
+    <center>
+        <h2 class="heading">Cart Products</h2>
+        <br>
+       <div class="cart-box" id="cart-box"> 
+        <table style="width: 800px" id="table" class="table">
+            <thead class="cart-header">
+                <th colspan="2">
+                    <b>Name</b>
+                </th>
+                <th>
+                    <b></b>
+                </th>
+                <th>
+                    <b>Price</b>
+                </th>
+                <th>
+                    <b>Quantity</b>
+                </th>
+                <th>
+                    <b>Amount</b>
+                </th>
+                <th></th>
+            </thead>
+            <tbody id="cartbody">
+            <div id="cartbody">    
+       <%
+             console.log('client side',usertype,items.length,udata,items); 
+            if(usertype=='customer'){ 
+               var total=0,sumTotal=0;
+               items=items[0];
+       %>
+       <div class="cartid" id="cartid" hidden><%=items[0].cart_id%></div>
+       <div class="customerid" hidden><%=items[0].customer_id%></div>
+       <%
+
+                        for(var i=0;i < items.length;i++){ 
+                            total=(items[i].price*items[i].quantity);
+                            sumTotal+=total;
+       %><div id="<%=items[i].id%>" class="item">
+                            <tr id="<%=items[i].product_id%>">
+                            <td><img src='<%=items[i].image%>' alt="<%=items[i].name%>" width="100" height="80"></td>    
+                            <td class="item-name"><%=items[i].name %></td>
+                            <td></td>
+                            <td class="item-price">$<%=items[i].price %></td>
+                            <td class="item-count">
+                                <button class="item-drop"> - </button>
+                                <div class="item-count-in-cart"><%=items[i].quantity %></div>
+                                <button class="item-add" > + </button>
+                            </td>
+                            <td class="item-total">$<%=total%> </td>
+                            <td class="item-remove">Remove</td>
+                        </tr>  </div>
+                           <%  
+                        }
+                           %>
+                           <tr style="background-color: white; font-size: 24px">
+                            <td></td>
+                            <td style="color: black">
+                                <b>Total</b>
+                            </td><td><td><td>
+                            <td class="cart-total">
+                                $<%=sumTotal%></td>
+                        </tr>
+                           <%
+                    }  
+            %>                  
+            %>
+      <div>
+            </tbody>
+            </table>
+            <fieldset class="register-register-button-container">
+                <button class="register-register-button">Pay Now</button>
+            </fieldset>
+            </div>   
+            <!-- end of cart -->
+<div class="container" id="card-container">
+
+
+  <div class="card">
+      <form id='purchase' action="paid" method="POST">     
+      
+   <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card">
+   <label>Card number:</label>
+   <input id="user" name="cardnumber" type="number" class="input1 cardnumber"  placeholder="5241 5678 9101 1121"  minlength="16" required>
+   
+   <label>Name:</label>
+   <input class="input1 name" name="name" id="name" placeholder="Sagar Shah" required>
+   
+   <label class="toleft">CVV:</label>
+   <input class="input1 toleft ccv" name="cvv" id="cvv" placeholder="321" required><br/>
+   
+   <label class="toleft">exp:</label>
+   <input class="input1 toleft ccv" name="exp" id="exp" placeholder="03/23" required>
+   
+   <input id="cartid" name="cartid" value="<%=items[0].cart_id%>" hidden>
+   <input id="customerid" name="customerid" value="<%=items[0].customer_id%>" hidden>
+   </div>
+   
+    <div class="card2">
+      <div class="col"><p>Cost:</p>
+      <h2 class="cost" id="cost">$400</h2><br>
+      <input name="cost" id="cost2" hidden>
+      
+      <p>Name:</p>
+      <h2 class="seller" id=""><%=udata.name%></h2>
+      </div>
+
+
+      <div class="col">
+        <p>Building Number</p>
+        <input class="input2 address1" name="address1" id="address1" placeholder="1645, Boulevard de Maisonneuve Ouest" required >
+      </div>
+      <div class="col">
+        <p>Appt No</p>
+        <input class="input2 address1" name="address2" id="address2" placeholder="Appt no.18" required>
+      </div>
+      <div class="col">
+        <p >City</p>
+        <input class="input2 address1" name="city" id="city" placeholder="Montreal" required>
+      </div>
+      <div class="col">
+        <p>State</p>
+        <input class=" input2 address1" name="state" id="state" placeholder="Quebec" required>
+      </div>
+      <div class="col">
+        <p>Pincode</p>
+        <input class="input2 address1" name="pincode" id="pincode" placeholder="H3H 2N3" required>
+      </div>
+      <div class="col">
+        <p>Phone</p>
+        <input class="input2 address1" name="phone" id="phone" placeholder="514-575-5625"   >
+      </div>
+
+      <!-- <p>Delivery Details:</p>
+        <i class="far fa-credit-card">saadsadd</i>
+        <h3 class="bought-items"></h3>
+        <p class="comprobe">Address:</p>
+        Building Number:
+        Appt No:
+        City:<input class="input2 address1" name="city" id="city" placeholder="Montreal" required><br />
+        State:<input class=" input2 address1" name="state" id="state" placeholder="Quebec" required>
+        Pincode: <input class="input2 address1" name="pincode" id="pincode" placeholder="Pincode" required>
+        Phone:<input class="address1" name="phone" id="phone" placeholder="Phone"   >
+        <p class="bought-items price"></p><br>
+        <h3 class="bought-items">items</h3>
+        <p class="bought-items description">description</p>
+        <p class="bought-items price">price  </p><br> -->
+      <p class="comprobe">This information will be sent to your email</p> 
+    <button class="proceed" ><svg class="sendicon" width="24" height="24" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path></svg></button>
+    </div>
+  </div> 
+  </form>         
+    </center>
+</body>
+</html>    

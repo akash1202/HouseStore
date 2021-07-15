@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <title>About US</title>
+    <style>
+        
+
+        a {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a :link {
+            color: white;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(69, 143, 69);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: rgb(69, 143, 69);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .b2 {
+            border-radius: 50%;
+            width: 6em;
+            height: 3em;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            padding: 3em;
+            color: white;
+
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: rgb(10, 129, 158);
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2.8em;
+            color: rgb(21, 165, 129);
+            text-align: center;
+        }
+
+        h2.ab{
+            font-size: 2.8em;
+            color: rgb(10, 129, 158);
+            text-align: center;
+        }
+
+        
+        h3 {
+            font-size: 2em;
+            color: rgb(21, 165, 129);
+            margin-bottom: 1em;
+
+        }
+
+        .div1 {
+            color: rgb(21, 165, 129);
+            margin-left: 20em;
+            margin-right: 20em;
+            font-size: 1.4em;
+        }
+    .item-submit{
+    background-color: rgb(21, 165, 129);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border: 0;
+    text-transform: capitalize;
+    border-radius: 3px;
+	font-family: Whitney;
+	cursor: pointer;
+}
+    </style>
+</head>
+
+<body class="bg">
+    <header class="cl-header">
+        <div>
+            <img src="/images/logo.jpg" alt="logo" class="cl-logo"/>
+            <h3 class="cl-company-name">
+                <b>House Store</b>
+            </h3>
+        </div><span>
+            <a href="Home">Home</a>
+            <% if((udata==null||udata=="")&&(usertype!="employee")){
+                %> <a href="register">Registration</a> <%
+                } %>
+            <a href="products">products</a>
+            <a href="orders">Orders</a>
+            <%
+            if(udata!=null&&udata!=""){
+                 %>     <a href="logoutme">Logout</a> <%    
+            }else{
+                  %> <a href="login">Login</a> <%
+            }
+            %>
+        </span> 
+    </header>
+    <p>
+    <h1>About Us</h1>
+    </p>
+    <div class="div1">
+        <fieldset>
+            As people, we must fly for a variety of reasons for survival, for work, and for pleasure.<br><br>
+            A house is never small or empty, when filled with love.<br><br>
+            With the advent of technology, we assume that by making House holds more available to all, we can make it more
+            enjoyable for all.<br><br>
+            Send us your Precious feedback to allow us to Provide you the best Service!
+        <a href="contactus">
+            <center><footer class="b2"></footer>
+            <button id='registration' class="item-submit" type='submit'><a href="contactus"><h2 class="ab">Feedback</h2></a></button>
+            <br><br>
+        </footer>   </center>
+        </fieldset>
+    </div>
+
+</body>
+
+</html>

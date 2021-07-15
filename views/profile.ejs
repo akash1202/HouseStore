@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <style>
+        span {
+            float: right;
+            font-size: 1.5em;
+            word-spacing: 1em;
+            margin-right: 5em;
+            color: white;
+        }
+        /* NavbarTop */
+        .navbar-top {
+            background-image: url("images/bg1.jpg");
+            color: rgb(69, 143, 69);
+            box-shadow: 0px 4px 8px 0px rgb(69, 143, 69);
+            height: 70px;
+        }
+
+        .navbar-top ul {
+            float: right;
+            list-style-type: none;
+            margin: 0;
+            overflow: hidden;
+            padding: 18px 50px 0 40px;
+        }
+
+        .navbar-top ul li {
+            float: left;
+        }
+
+        /* End */
+
+        /* Sidenav */
+        .sidenav {
+            background-image: url("images/bg1.png");
+            color: #333;
+            border-bottom-right-radius: 25px;
+            border-top-right-radius: 25px;
+            height: 86%;
+            left: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+            position: absolute;
+            top: 70px;
+            width: 250px;
+        }
+
+        .profile {
+            margin-bottom: 20px;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            box-shadow: 0px 0px 5px 1px rgb(156, 152, 152);
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+
+
+        .userType {
+            font-size: 16px;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+
+        .url,
+        hr {
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .url hr {
+            margin-left: 20%;
+            width: 60%;
+            background-color: rgb(69, 143, 69);
+        }
+
+        hr {
+            border-color: rgb(69, 143, 69);
+            border-width: 3px;
+        }
+
+
+        .url a {
+            color: rgb(69, 143, 69);
+            display: block;
+            font-size: 20px;
+            margin: 10px 0;
+            padding: 6px 8px;
+            text-decoration: none;
+        }
+
+        .url a:hover,
+        .url .active {
+            background-color: transparent;
+            color: rgb(69, 143, 69);
+            border-radius: 28px;
+            margin-left: 14%;
+            width: 65%;
+        }
+
+
+        /* End */
+
+        /* Main */
+        .main {
+            margin-top: 2%;
+            margin-left: 20%;
+            font-size: 28px;
+            padding: 0 10px;
+            width: 58%;
+            float: left;
+        }
+
+        .main h2 {
+            color: #333;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 24px;
+            align-items: left;
+            margin-bottom: 10px;
+        }
+
+        .main .card {
+            background-image: url("images/bg1.png");
+            border-radius: 18px;
+            box-shadow: 1px 1px 8px 0 grey;
+            height: auto;
+            width: 100%;
+            color: rgb(69, 143, 69);
+            margin-bottom: 20px;
+            margin-right: 20px;
+            padding: 20px 0 20px 50px;
+            float: left;
+        }
+
+        .main .card table {
+            border: none;
+            font-size: 16px;
+            height: 270px;
+            width: 80%;
+        }
+
+
+        .card {
+            border: none;
+            max-width: 450px;
+            border-radius: 15px;
+            margin: 150px 0 150px;
+            padding: 35px;
+            padding-bottom: 20px !important
+        }
+
+        .heading {
+            color: #C1C1C1;
+            font-size: 14px;
+            font-weight: 500
+        }
+
+
+
+        img:hover {
+            cursor: pointer
+        }
+
+        .text-warning {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgb(69, 143, 69);
+        }
+
+        input {
+            border-bottom: 1.5px solid #E8E5D2 !important;
+            font-weight: bold;
+            border-radius: 0;
+            border: 0
+        }
+        .col-sm-5 {
+            padding-left: 90px
+        }
+        h1 {
+            font-size: 3em;
+            color: rgb(10, 129, 158);
+            margin-bottom: 0.4em;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: rgb(21, 165, 129);
+            text-align: center;
+        }
+
+        
+        h3 {
+            font-size: 2em;
+            color: rgb(21, 165, 129);
+            margin-bottom: 1em;
+
+        }
+
+        h4{
+            background-color: transparent;
+            border-radius: 28px;
+            margin-left: 14%;
+            width: 65%;
+        }
+
+
+        /* End */
+    </style>
+</head>
+
+<body class="bg">
+    <header class="cl-header">
+        <div>
+            <img src="/images/logo.jpg" alt="logo" class="cl-logo" />
+            <h3 class="cl-company-name">
+                <b>House Store</b>
+            </h3>
+        </div> <span>
+            <a href="Home">Home</a>
+            <% if((udata==null||udata=="")&&(usertype!="employee")){
+              %> <a href="register">Registration</a>
+            <%
+              } %>
+            <% if((udata!=null&&udata!="")&&(usertype=="employee")){
+      %><a href="addproduct">NewProduct</a> <a href="allorders">Orders</a>
+            <%
+      }else if((udata!=null&&udata!="")&&(usertype=="customer")){
+      %>
+            <a href="shoppingcart"><img style="color:green;" width="30" height="30" viewBox="0 0 24 24"
+                    src="images/cart.svg" /></a>
+            <a href="aboutus">AboutUs</a>
+            <%
+      }
+      %>
+            <%
+                  if(udata!=null&&udata!=""){
+                       %> <a href="logoutme">Logout</a> <%    
+                  }else{
+                        %> <a href="login">Login</a> <%
+                  }
+                  %>
+
+        </span>
+    </header>
+    <!-- End -->
+
+    <!-- Sidenav -->
+    <div class="sidenav">
+        <div class="profile">
+
+            <img src="images/photo.Webp" alt="" width="100" height="100">
+        </div>
+
+        <div class="sidenav-url">
+            <div class="url">
+                <a href="#profile" class="active"> <%=udata.name%></a>
+                <!-- <hr align="center" class="active">Customer</hr> -->
+                <hr>
+                </hr>
+                <a href="#profile" class="active"> Customer</a>
+                <a href="orders" class="active"> My Orders</a>
+                <a href="logoutme" class="active">Logout</a>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="card">
+            <h2 class="heading">IDENTITY</h2>
+                <div class="container-fluid">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-sm-12">
+                            <div class="col-sm">
+                            Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<%=udata.name%></div>
+                            <div class="col-sm">                    
+                            Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<%= udata.email%></div>
+                            <div class="col-sm"> Phone &nbsp;&nbsp;&nbsp; :&nbsp;<%=udata.phone%></div>
+                </div>
+                </div>
+                </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-12">
+                    <div class="card mx-auto">
+                        <h2 class='heading'>PAYMENT DETAILS</h2>
+                        <form class="card-details ">
+                            <div class="card-body">
+                                <img src="https://img.icons8.com/color/48/000000/visa.png" width="64px" height="60px" />
+                                <div class="form-group">
+                                <p class="text-warning mb-0">Card Number</p> <input type="text" name="card-num"
+                                    value="<%=card[0].cardno%>" placeholder="1234 5678 9012 3457" size="17" id="cno"
+                                    minlength="19" maxlength="19" disabled>
+
+                            </div>
+                            <div class="form-group">
+                                <p class="text-warning mb-0">Cardholder's Name</p> <input type="text" name="name"
+                                    value="<%=card[0].fullname%>" placeholder="Name" size="17" disabled>
+                            </div>
+                            <div class="form-group pt-2">
+                                <div class="row d-flex">
+                                    <div class="col-sm-4">
+                                        <p class="text-warning mb-0">Expiration</p> <input type="text" name="exp"
+                                            value="<%=card[0].exp%>" placeholder="" size="7" id="exp" minlength="7"
+                                            maxlength="7" disabled>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <p class="text-warning mb-0">Cvv</p> <input type="password" name="cvv"
+                                            value="<%=card[0].cvv%>" placeholder="&#9679;&#9679;&#9679;" size="1"
+                                            minlength="3" maxlength="3" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+</body>
+
+</html>
